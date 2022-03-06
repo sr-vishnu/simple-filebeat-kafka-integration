@@ -1,6 +1,6 @@
 ## **simple-filebeat-kafka-integration**
 
-A demo featuring filebeat kafka integration
+A demo featuring filebeat kafka integration.
 
 ### **prerequisites**:
 ---
@@ -11,7 +11,7 @@ A demo featuring filebeat kafka integration
 ### **clone the repo**:
 ---
 ```
-git clone
+git clone https://github.com/sr-vishnu/simple-filebeat-kafka-integration.git
 ```
 
 ### **setup**:
