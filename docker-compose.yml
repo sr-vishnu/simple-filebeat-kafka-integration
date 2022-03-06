@@ -1,0 +1,52 @@
+version: "3.5"
+services:
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:8.0.1
+    volumes:
+      - "${FILE_PATH}:/var/log/logFile.log:ro"
+      - "${CONFIG_PATH}:/usr/share/filebeat/filebeat.yml:ro"
+    environment:
+      - KAFKA_TOPIC=${KAFKA_TOPIC}
+    networks:
+      - filebeat-net
+    container_name: filebeat
+  zookeeper:
+    image: docker.io/bitnami/zookeeper:3.7
+    ports:
+      - "2181:2181"
+    volumes:
+      - "zookeeper-data:/bitnami"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+      - filebeat-net
+    container_name: zookeeper
+  kafka:
+    image: docker.io/bitnami/kafka:3
+    ports:
+      - "9092:9092"
+    volumes:
+      - "kafka-data:/bitnami"
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+    depends_on:
+      - zookeeper
+      - filebeat
+    networks:
+      - filebeat-net
+    container_name: kafka
+
+networks:
+  filebeat-net:
+    name: filebeat-net
+    driver: bridge
+
+volumes:
+  zookeeper-data:
+    name: zookeeper-data
+    driver: local
+  kafka-data:
+    name: kafka-data
+    driver: local

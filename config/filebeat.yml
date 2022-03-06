@@ -1,0 +1,17 @@
+
+#input config
+filebeat.inputs:
+- type: log
+  paths:
+    - /var/log/logFile.log
+
+#output config
+output.kafka:
+  hosts:
+    - "kafka:9092"
+  topic: ${KAFKA_TOPIC}
+  partition.round_robin:
+    reachable_only: false
+  required_acks: 1
+  compression: gzip
+  max_message_bytes: 1000000
