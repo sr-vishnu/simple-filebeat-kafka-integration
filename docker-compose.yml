@@ -10,6 +10,8 @@ services:
     networks:
       - filebeat-net
     container_name: filebeat
+    depends_on:
+      - kafka
   zookeeper:
     image: docker.io/bitnami/zookeeper:3.7
     ports:
@@ -33,7 +35,6 @@ services:
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
     depends_on:
       - zookeeper
-      - filebeat
     networks:
       - filebeat-net
     container_name: kafka
