@@ -16,7 +16,7 @@ git clone https://github.com/sr-vishnu/simple-filebeat-kafka-integration.git
 
 ### **setup**:
 ---
-#### copy .env.example to .env
+#### copy env.example to .env and modify the variables as per your requirement.
 ```
 cd simple-filebeat-kafka-integration
 
