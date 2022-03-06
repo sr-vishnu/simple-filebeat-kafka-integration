@@ -2,19 +2,19 @@
 
 A demo featuring filebeat kafka integration.
 
-### **prerequisites**:
+### **prerequisites:**
 ---
 - install [docker](https://docs.docker.com/engine/install/)
 - install [docker-compose](https://docs.docker.com/compose/install/)
 
 
-### **clone the repo**:
+### **clone the repo:**
 ---
 ```
 git clone https://github.com/sr-vishnu/simple-filebeat-kafka-integration.git
 ```
 
-### **setup**:
+### **setup:**
 ---
 #### copy env.example to .env and modify the variables as per your requirement.
 ```
