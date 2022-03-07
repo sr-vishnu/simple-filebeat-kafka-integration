@@ -4,6 +4,7 @@ A demo featuring filebeat kafka integration.
 
 ### **prerequisites:**
 ---
+- install [git](https://git-scm.com/downloads)
 - install [docker](https://docs.docker.com/engine/install/)
 - install [docker-compose](https://docs.docker.com/compose/install/)
 
